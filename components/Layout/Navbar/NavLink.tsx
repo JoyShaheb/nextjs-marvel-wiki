@@ -1,30 +1,33 @@
+import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 interface NavLinkProps {
-  href: string;
-  text: string;
-  isCurrent: boolean;
+  location: string;
+  isMobile: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, text, isCurrent }) => {
-  const linkClasses = `block py-2 pl-3 pr-4 rounded ${
-    isCurrent
-      ? "text-white bg-blue-700"
-      : "text-gray-900 hover:bg-gray-100 md:border-0 md:hover:bg-transparent md:hover:text-blue-700"
-  } md:p-0 ${
-    isCurrent
-      ? "md:bg-transparent md:text-blue-700"
-      : "dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-  }`;
+const NavLink: React.FC<NavLinkProps> = ({ location, isMobile }) => {
+  const baseStyle = `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md`;
+  const activeStyle = `bg-gray-900 text-white`;
+
+  const textStyle = isMobile ? "text-base" : "text-sm";
+  const fontStyle = "font-medium";
+
+  const pathname = usePathname()!;
+  const path = pathname.split("/")[1];
+
+  const isActive = path === location;
+  const colorStyle = isActive ? activeStyle : "";
 
   return (
-    <a
-      href={href}
-      className={linkClasses}
-      aria-current={isCurrent ? "page" : undefined}
+    <Link
+      href={`/${location}`}
+      className={`${colorStyle} ${baseStyle} ${textStyle} ${fontStyle}`}
+      {...(path === location && { "aria-current": "page" })}
     >
-      {text}
-    </a>
+      {location}
+    </Link>
   );
 };
 

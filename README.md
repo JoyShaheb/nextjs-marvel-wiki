@@ -14,6 +14,7 @@ This is a work in progres project. Will be finished soon ✨
 ## Improvement List
 
 * fix logo of navbar and update the options
+* fix light/ dark mode switch
 
 ## Future Features to Add
 

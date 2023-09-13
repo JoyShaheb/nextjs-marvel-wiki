@@ -11,4 +11,8 @@ let privateKey = process.env.NEXT_PUBLIC_MARVEL_WIKI_PRIVATE_API_KEY;
 
 let hash = getHash(ts, privateKey, apiKey);
 
-export const fetchCharactersURL = `${baseURL}/characters?ts=${ts}&apikey=${apiKey}&hash=${hash}`;
+export const fetchCharactersURL = (search: string) => {
+  const queryParams = search ? `name=${search}&` : "";
+
+  return `${baseURL}/characters?${queryParams}ts=${ts}&apikey=${apiKey}&hash=${hash}`;
+};

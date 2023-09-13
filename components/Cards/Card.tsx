@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import { ICharacter } from "@/types/characters.interface";
 import { textLimit } from "../Text/TextLimit";
+import Link from "next/link";
 
 const Card: FC<ICharacter> = ({
   id,
@@ -17,11 +18,11 @@ const Card: FC<ICharacter> = ({
   urls,
 }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="cursor-pointer bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Image
         src={`${thumbnail?.path}.${thumbnail?.extension}`}
         alt={`${name}`}
-        className="rounded-t-lg w-[400px] h-[350px] object-cover object-left-top"
+        className="rounded-t-lg w-[100%] h-[300px] md:h-[350px] object-cover object-left-top"
         height={100}
         width={400}
       />

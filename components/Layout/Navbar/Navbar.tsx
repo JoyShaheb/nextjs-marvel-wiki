@@ -72,7 +72,7 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4 items-center">
-                <NavLink isMobile={false} location="Products" />
+                <NavLink isMobile={false} location="Characters" />
                 <NavLink isMobile={false} location="Compare" />
                 <NavLink isMobile={false} location="About" />
               </div>
@@ -99,7 +99,7 @@ const Navbar = () => {
       {navbarMenu && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="space-y-1 px-2 pt-2 pb-3 flex flex-col">
-            <NavLink isMobile={true} location="Products" />
+            <NavLink isMobile={true} location="Characters" />
             <NavLink isMobile={true} location="Compare" />
             <NavLink isMobile={true} location="About" />
           </div>

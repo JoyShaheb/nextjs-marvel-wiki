@@ -44,7 +44,7 @@ interface IUrl {
   url: string;
 }
 
-interface ICharacter {
+export interface ICharacter {
   id: number;
   name: string;
   description: string;

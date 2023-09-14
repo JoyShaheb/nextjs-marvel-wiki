@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 interface ISearchBarProps {
@@ -7,10 +7,12 @@ interface ISearchBarProps {
 }
 
 const SearchBar: FC<ISearchBarProps> = ({ searchTerm, setSearchTerm }) => {
+  const [input, setInput] = useState(searchTerm);
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        setSearchTerm(input);
       }}
     >
       <label
@@ -31,13 +33,12 @@ const SearchBar: FC<ISearchBarProps> = ({ searchTerm, setSearchTerm }) => {
           id="searchBar"
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search Mockups, Logos..."
-          required
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <button
           type="submit"
-          className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Search
         </button>

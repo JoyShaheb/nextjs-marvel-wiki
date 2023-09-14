@@ -16,6 +16,7 @@ This is a work in progres project. Will be finished soon ✨
 * fix logo of navbar and update the options
 * ✅ fix light/ dark mode switch
 * display no data found UI
+* add caching feature from rtk query to save data fetching
 
 ## Future Features to Add
 

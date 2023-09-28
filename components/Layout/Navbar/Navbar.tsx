@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import {
   Bars3Icon,
@@ -8,31 +9,16 @@ import {
   MoonIcon,
 } from "@heroicons/react/24/outline";
 import { gradientTextStyles } from "@/components/Text/GradientText";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/app/store";
-import { themeSwitch } from "@/app/store";
 import { ThemeTypesEnum } from "@/types/enum";
 import NavLink from "./NavLink";
 
 const Navbar = () => {
-  const theme = useSelector((state: RootState) => state.system.mode);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    document.documentElement.classList.toggle(
-      ThemeTypesEnum.DARK,
-      theme === ThemeTypesEnum.DARK
-    );
-  }, [theme]);
+  const { theme, setTheme } = useTheme();
 
   const handleChangeTheme = () =>
-    dispatch(
-      themeSwitch(
-        theme === ThemeTypesEnum.LIGHT
-          ? ThemeTypesEnum.DARK
-          : ThemeTypesEnum.LIGHT
-      )
-    );
+    theme === ThemeTypesEnum.DARK
+      ? setTheme(ThemeTypesEnum.LIGHT)
+      : setTheme(ThemeTypesEnum.DARK);
 
   const [navbarMenu, setNavbarMenu] = useState(false);
 

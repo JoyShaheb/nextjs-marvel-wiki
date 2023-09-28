@@ -17,6 +17,7 @@ This is a work in progres project. Will be finished soon ✨
 * ✅ fix light/ dark mode switch
 * display no data found UI
 * add caching feature from rtk query to save data fetching
+* add pagination feature
 
 ## Future Features to Add
 
